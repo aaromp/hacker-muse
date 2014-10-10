@@ -85,8 +85,10 @@ mostRecentPost('neonkiwi', function(data){
 
 
 
+
 console.log('\'Allo \'Allo! Event Page for Browser Action');
 
-chrome.browserAction.onClicked.addListener(function(){
+chrome.browserAction.onClicked.addListener(function(tab){
   console.log('\'Allo from popup');
+  chrome.tabs.sendMessage(tab.id,{action:'SendIt'});
 });
