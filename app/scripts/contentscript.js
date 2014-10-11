@@ -1,7 +1,7 @@
 'use strict';
 
 console.log('\'Allo \'Allo! Content script', 'updated');
-var wrapper, div, image, state, detachModal;
+var wrapper, div, image, state, detachModal, toggleModal;
 wrapper = document.createElement('div');
 wrapper.setAttribute('style','position: absolute; left: 0px; top: 0px; background-color: rgb(255, 255, 255); opacity: 0.5; z-index: 2000; height: 1083px; width: 100%;');
 div = document.createElement('div');
@@ -15,7 +15,7 @@ detachModal = function() {
   div = document.body.removeChild(div);
 };
 
-var handleMessage = function(message) {
+toggleModal = function(message) {
   if (message) {      
     document.body.appendChild(wrapper);
     document.body.appendChild(div);
@@ -29,11 +29,11 @@ var handleMessage = function(message) {
 
 wrapper.addEventListener('click', function() {
   chrome.runtime.sendMessage({modal: state}, function() {
-    handleMessage(state);
+    toggleModal(state);
   });
 });
 
 chrome.extension.onMessage.addListener(function(message, sender, sendResponse) {
-  handleMessage(message.modal);
+  toggleModal(message.modal);
   sendResponse({modal: state});
 });
