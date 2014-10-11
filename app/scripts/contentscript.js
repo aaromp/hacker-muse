@@ -1,22 +1,23 @@
 'use strict';
 
 console.log('\'Allo \'Allo! Content script', 'updated');
+  var wrapper, div, image;
+  wrapper = document.createElement('div');
+  wrapper.setAttribute('style','position: absolute; left: 0px; top: 0px; background-color: rgb(255, 255, 255); opacity: 0.5; z-index: 2000; height: 1083px; width: 100%;');
+  div = document.createElement('div');
+  div.setAttribute('style','position: absolute; width: 350px; border: 1px solid rgb(51, 102, 153); padding: 10px; background: rgb(255, 255, 255); z-index: 2001; overflow: auto; text-align: center; top: 149px; left: 497px;');
+  image = document.createElement('img');
+  image.src = 'http://www.iab.net/extra/adquickref/spinnerLarge.gif';
 
 chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
-   if (msg.action === 'SendIt') {
-      var wrapper, div, image;
-      
-      wrapper = document.createElement('div');
-      wrapper.setAttribute('style','position: absolute; left: 0px; top: 0px; background-color: rgb(255, 255, 255); opacity: 0.5; z-index: 2000; height: 1083px; width: 100%;');
-      
-      div = document.createElement('div');
-      div.setAttribute('style','position: absolute; width: 350px; border: 1px solid rgb(51, 102, 153); padding: 10px; background: rgb(255, 255, 255); z-index: 2001; overflow: auto; text-align: center; top: 149px; left: 497px;');
-      
-      image = document.createElement('img');
-      image.src = 'http://www.iab.net/extra/adquickref/spinnerLarge.gif';
-      
-      document.body.appendChild(wrapper);
-      document.body.appendChild(div);
-      div.appendChild(image);
-   }
+  if (msg.action === 'SendIt') {      
+    document.body.appendChild(wrapper);
+    document.body.appendChild(div);
+    div.appendChild(image);
+  }
+
+  if (msg.action === 'RemoveIt') {
+    wrapper = document.body.removeChild(wrapper);
+    div = document.body.removeChild(div);
+  }
 });

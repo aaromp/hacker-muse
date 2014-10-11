@@ -88,7 +88,10 @@ mostRecentPost('neonkiwi', function(data){
 
 console.log('\'Allo \'Allo! Event Page for Browser Action');
 
+var message = 'SendIt';
+
 chrome.browserAction.onClicked.addListener(function(tab){
   console.log('\'Allo from popup');
-  chrome.tabs.sendMessage(tab.id,{action:'SendIt'});
+  chrome.tabs.sendMessage(tab.id,{action:message});
+  message = message === 'SendIt' ? 'RemoveIt' : 'SendIt';
 });
