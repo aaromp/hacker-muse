@@ -1,7 +1,7 @@
 'use strict';
 
 console.log('\'Allo \'Allo! Content script', 'updated');
-var wrapper, div, image, state, detachModal, toggleModal;
+var wrapper, div, image, state, appendModal, detachModal, toggleModal;
 wrapper = document.createElement('div');
 wrapper.setAttribute('style','position: absolute; left: 0px; top: 0px; background-color: rgb(255, 255, 255); opacity: 0.5; z-index: 2000; height: 1083px; width: 100%;');
 div = document.createElement('div');
@@ -9,6 +9,12 @@ div.setAttribute('style','position: absolute; width: 350px; border: 1px solid rg
 image = document.createElement('img');
 image.src = 'http://www.iab.net/extra/adquickref/spinnerLarge.gif';
 
+appendModal = function() {
+  document.body.appendChild(wrapper);
+  document.body.appendChild(div);
+  div.appendChild(image);
+  
+};
 
 detachModal = function() {
   wrapper = document.body.removeChild(wrapper);
@@ -17,9 +23,7 @@ detachModal = function() {
 
 toggleModal = function(message) {
   if (message) {      
-    document.body.appendChild(wrapper);
-    document.body.appendChild(div);
-    div.appendChild(image);
+    appendModal();
     state = false;
   } else {
     detachModal();
