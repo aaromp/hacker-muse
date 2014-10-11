@@ -1,28 +1,50 @@
 'use strict';
 
 console.log('\'Allo \'Allo! Content script', 'updated');
-var wrapper, div, image, state, appendModal, detachModal, toggleModal;
-wrapper = document.createElement('div');
-wrapper.setAttribute('style','position: absolute; left: 0px; top: 0px; background-color: rgb(255, 255, 255); opacity: 0.5; z-index: 2000; height: 1083px; width: 100%;');
-div = document.createElement('div');
-div.setAttribute('style','position: absolute; width: 350px; border: 1px solid rgb(51, 102, 153); padding: 10px; background: rgb(255, 255, 255); z-index: 2001; overflow: auto; text-align: center; top: 149px; left: 497px;');
+var background, modal, image, state, appendModal, detachModal, toggleModal;
+background = document.createElement('div');
+background.setAttribute('style',
+  'opacity: 0.8;' +
+  'background-color: #000;' +
+  'position: fixed;' +
+  'width: 100%;' +
+  'height: 100%;' +
+  'top: 0px;' +
+  'left: 0px;' +
+  'z-index: 1000;'
+);
+
+modal = document.createElement('div');
+modal.setAttribute('style',
+  'margin: auto;' +
+  'position: absolute;' +
+  'width: 600px;' +
+  'height: 200px;' +
+  'background: #FFF;' +
+  'z-index: 1001;' +
+  'top: 0;' +
+  'left: 0;' +
+  'bottom: 0;' +
+  'right: 0;'
+);
+
 image = document.createElement('img');
 image.src = 'http://www.iab.net/extra/adquickref/spinnerLarge.gif';
 
 appendModal = function() {
-  document.body.appendChild(wrapper);
-  document.body.appendChild(div);
-  div.appendChild(image);
+  document.body.appendChild(background);
+  document.body.appendChild(modal);
+  modal.appendChild(image);
   
 };
 
 detachModal = function() {
-  wrapper = document.body.removeChild(wrapper);
-  div = document.body.removeChild(div);
+  background = document.body.removeChild(background);
+  modal = document.body.removeChild(modal);
 };
 
-toggleModal = function(message) {
-  if (message) {      
+toggleModal = function(on) {
+  if (on) {      
     appendModal();
     state = false;
   } else {
@@ -31,7 +53,7 @@ toggleModal = function(message) {
   }
 };
 
-wrapper.addEventListener('click', function() {
+background.addEventListener('click', function() {
   chrome.runtime.sendMessage({modal: state}, function() {
     toggleModal(state);
   });
