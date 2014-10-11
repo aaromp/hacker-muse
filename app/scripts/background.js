@@ -36,6 +36,15 @@ var listenToUser = function(user, success, failure){
   });
 };
 
+var removeUserListener = function(user, cb){
+  if ( cb ) {
+    users.child(user).off('value', cb);
+  }
+  else { 
+    users.child(user).off('value');
+  }
+};
+
 //callback is invoked whenever change to user's most recent post occurs
 //or if there is a new most recent post
 //failure is invoked if no data found
@@ -67,6 +76,19 @@ var mostRecentPost = function(user, success, failure){
   });
 };
 
+var removePostListeners = function(user){
+  users.child(user).on('value', function(data){
+    if ( data !== null ){
+      var submissions  = data.submitted;
+      for ( var i = 0; i < submissions.length; i++ ){
+        items.child(submissions[i]).off('value');
+      }
+    }
+    users.child(user).off('value');
+  });
+};
+
+
 //here are example invocations of those functions
 listenToUser('neonkiwi', function(data){
   console.log('user data is: ', data);
@@ -77,11 +99,6 @@ mostRecentPost('neonkiwi', function(data){
 }, function(){
   console.log('inside failure cb of listenToPost');
 });
-
-
-
-
-
 
 
 

@@ -1,6 +1,7 @@
 'use strict';
 
 console.log('\'Allo \'Allo! Content script');
+
 var background, modal, on, appendModal, detachModal, toggleModal;
 var view, textfield, button, label, flipper, flipped, logo;
 var pointFlipper, pointFlipped, commentFlipper, commentFlipped;
