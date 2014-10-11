@@ -88,20 +88,15 @@ mostRecentPost('neonkiwi', function(data){
 
 console.log('\'Allo \'Allo! Event Page for Browser Action');
 
-var state = 'on';
+var state = true;
 
 chrome.browserAction.onClicked.addListener(function(tab){
-  chrome.tabs.sendMessage(tab.id,{action:state}, function(response) {
-    state = response.action;
+  chrome.tabs.sendMessage(tab.id, {modal: state}, function(response) {
+    state = response.modal;
   });
 });
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
-  if (message.action === 'on') {      
-    state = 'off';
-  } else if (message.action === 'off') {
-    state = 'on';
-  }
-
-  sendResponse({action: state});
+  state = !message.modal;
+  sendResponse({modal: state});
 });

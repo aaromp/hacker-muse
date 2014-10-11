@@ -16,27 +16,24 @@ detachModal = function() {
 };
 
 var handleMessage = function(message) {
-  console.log('handling message', message);
-  if (message === 'on') {      
+  if (message) {      
     document.body.appendChild(wrapper);
     document.body.appendChild(div);
     div.appendChild(image);
-    state = 'off';
-  }
-
-  if (message === 'off') {
+    state = false;
+  } else {
     detachModal();
-    state = 'on';
+    state = true;
   }
 };
 
 wrapper.addEventListener('click', function() {
-  chrome.runtime.sendMessage({action: state}, function() {
+  chrome.runtime.sendMessage({modal: state}, function() {
     handleMessage(state);
   });
 });
 
 chrome.extension.onMessage.addListener(function(message, sender, sendResponse) {
-  handleMessage(message.action);
-  sendResponse({action: state});
+  handleMessage(message.modal);
+  sendResponse({modal: state});
 });
