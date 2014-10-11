@@ -8,14 +8,6 @@ chrome.runtime.onInstalled.addListener(function (details) {
 var items = new Firebase('https://hacker-news.firebaseio.com/v0/item');
 var users = new Firebase('https://hacker-news.firebaseio.com/v0/user');
 
-var post = items.child('8439408');
-
-post.on('value', function(data){
-  console.log('inside callback to post');
-  console.log('data is: ', data.val().score);
-  chrome.browserAction.setBadgeText({text: data.val().score.toString(10)});
-});
-
 //get user
 var getUser = function(success, unset, context){
   chrome.storage.sync.get('hackerMuseUser', function(data){
@@ -35,51 +27,56 @@ var setUser = function(userName, cb, context){
   });
 };
 
-
-//work in progress
-
-
-//userCB will be invoked on every change of user
-//if user submits new post, postCB will be invoked
-//if there is a change to current most recent post, postCB will be invoked
-var monitor = function(user, userCB, postCB, errorCB){
+//callback is invoked whenever change to user occurs
+//failure is invoked if no data found
+var listenToUser = function(user, success, failure){
   users.child(user).on('value', function(data){
-    //if no data for user then invoke errorCB
-    if (data.val() === null){
-      errorCB();
-    } else {
-      //userCB will be invoked on changes to user
-      data = data.val();
-      userCB(data);
+    if (data.val() === null) failure();
+    else success(data.val());
+  });
+};
 
-      if( data.submitted.length > 0){
-        var curr = 0;
-        (function findRecentPost(){
-          if ( curr > data.submitted.length) return;
-          var post = data.submitted[0]
-        });
-      }
-        if(data.submitted[i].type === 'story'){
-          var post = data.submitted[0];
-          items.child(post).on('value', function(data){
-            postCB(data.val());
+//callback is invoked whenever change to user's most recent post occurs
+//or if there is a new most recent post
+//failure is invoked if no data found
+var mostRecentPost = function(user, success, failure){
+  users.child(user).on('value', function(data){
+    var submissions, curr;
+    data = data.val();
+    if (data === null) failure();
+    else {
+      submissions = data.submitted;
+      console.log('data.submitted: ', data.submitted);
+      curr = 0;
+      (function getPost(){
+        if (curr >= submissions.length) failure();
+        else {
+          items.child(submissions[curr]).on('value', function(data){
+            data = data.val();
+            if (data !== null && data.type === 'story'){
+              success(data);
+            }
+            else {
+              curr++;
+              getPost();
+            }
           });
-          break;
         }
-      }
+      })();
     }
   });
 };
 
-mostRecentPost('neonkiwi', function(d){
-  console.log('change to user registered');
-  console.log('user: ', d);
-}, function(d){console.log('change to most recent post registered');
-  console.log('post: ', d);
-}, 
-    function(){console.log('error registered');}
-);
+//here are example invocations of those functions
+listenToUser('neonkiwi', function(data){
+  console.log('user data is: ', data);
+});
 
+mostRecentPost('neonkiwi', function(data){
+  console.log('post data is: ', data);
+}, function(){
+  console.log('inside failure cb of listenToPost');
+});
 
 
 
