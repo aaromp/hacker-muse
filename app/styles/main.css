@@ -1,3 +1,29 @@
-body {
-  padding: 20px;
+.hn-muse-blur {
+  -webkit-filter: blur(5px) grayscale(50%);
+}
+
+.hn-muse-background {
+  opacity: 0.8;
+  background-color: #000;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.hn-muse-modal {
+  background: #FF913B;
+  -webkit-box-shadow: -1px 3px 3px rgba(0, 0, 0, 0.16);
+  z-index: 1001;
+  margin: auto;
+  position: absolute;
+  width: 600px;
+  height: 200px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  /*-webkit-filter: none;*/
 }
