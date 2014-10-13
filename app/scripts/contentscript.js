@@ -2,12 +2,24 @@
 
 console.log('\'Allo \'Allo! Content script');
 var background, modal, on, appendModal, detachModal, toggleModal;
+var userview, textfield, button;
 
 background = document.createElement('div');
 background.classList.add('hn-muse-background');
 
 modal = document.createElement('div');
 modal.classList.add('hn-muse-modal');
+
+userview = document.createElement('div');
+textfield = document.createElement('input');
+textfield.setAttribute('type', 'text');
+textfield.setAttribute('value', 'default');
+button = document.createElement('button');
+
+modal.appendChild(userview);
+userview.appendChild(textfield);
+userview.appendChild(button);
+
 
 appendModal = function() {
   // blur everything in the background
@@ -20,7 +32,7 @@ appendModal = function() {
 
   // append modal
   document.body.appendChild(modal);
-  window.getComputedStyle(modal).transform;
+  window.getComputedStyle(modal).transform; // make sure transform is loaded
   modal.classList.add('hn-muse-on');
 };
 
