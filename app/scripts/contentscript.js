@@ -20,10 +20,8 @@ appendModal = function() {
 
   // append modal
   document.body.appendChild(modal);
-  setTimeout(function(){
-    console.log('turning on dat class');
-    modal.classList.add('hn-muse-on');
-  }, 10);
+  window.getComputedStyle(modal).transform;
+  modal.classList.add('hn-muse-on');
 };
 
 detachModal = function() {
