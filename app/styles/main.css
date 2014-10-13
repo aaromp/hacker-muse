@@ -115,6 +115,13 @@
   left: 25px;
 }
 
+.hn-muse-post {
+  color: #50E3C2;
+  position: absolute;
+  top: 0;
+  left: 41px;
+}
+
 .hn-karma-flipper {
   position: absolute;
   top: 47px;
@@ -153,7 +160,7 @@
 
 .hn-muse-link {
   position: absolute;
-  top: 24px;
+  top: 20px;
   left: 14px;
 }
 
@@ -170,7 +177,7 @@
 .hn-user-label {
   color: #FFFFFF;
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 15px;
 }
 
@@ -193,7 +200,7 @@
   left: 220px;
 }
 
-.hn-muse-label, .hn-user-label, .hn-main-label, .hn-point-label, .hn-comment-label {
+.hn-muse-label, .hn-muse-post, .hn-user-label, .hn-main-label, .hn-point-label, .hn-comment-label {
   font-family: Futura-Medium;
   font-size: 20px;
   line-height: 27px;

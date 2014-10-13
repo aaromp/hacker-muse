@@ -55,9 +55,13 @@ function track() {
   view.classList.remove('hn-muse-dark');
   view.classList.add('hn-muse-light');
 
-  // repurpose label
+  // remove textfield
   textfield = view.removeChild(textfield);
-  label = view.removeChild(label);
+
+  // repurpose label
+  label.innerHTML = 'POST';
+  label.classList.remove('hn-muse-label');
+  label.classList.add('hn-muse-post');
 
   // repurpose image
   image = flipper.removeChild(image);
