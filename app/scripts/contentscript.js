@@ -22,7 +22,7 @@ textfield.setAttribute('type', 'text');
 textfield.classList.add('hn-muse-textfield');
 
 button = document.createElement('button');
-button.classList.add('hn-muse-button');
+button.classList.add('hn-user-button');
 
 
 label = document.createElement('h1');
@@ -48,13 +48,14 @@ modal.appendChild(flipper);
 flipper.appendChild(logo);
 flipper.appendChild(flipped);
 
-var track;
-
-track = function() {
+function track() {
+  console.log('track!');
   // remove unused elements
   logo = flipper.removeChild(logo);
   textfield = view.removeChild(textfield);
-  button = view.removeChild(button);
+  button.classList.remove('hn-user-button');
+  button.classList.add('hn-track-button');
+  button.removeEventListener('click', track);
   label = view.removeChild(label);
 
   // change view background
@@ -80,12 +81,9 @@ track = function() {
   view.appendChild(commentFlipper);
   // commentFlipper.appendChild(logo);
   commentFlipper.appendChild(commentFlipped);
-};
+}
 
-button.addEventListener('click', function() {
-  console.log(textfield.value);
-  track();
-});
+button.addEventListener('click', track);
 
 appendModal = function() {
   // blur everything in the background
