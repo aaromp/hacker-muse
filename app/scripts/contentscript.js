@@ -5,6 +5,7 @@ var background, modal, on, appendModal, detachModal, toggleModal;
 var view, textfield, button, label, flipper, flipped, logo;
 var pointFlipper, pointFlipped, pointLabel;
 var commentFlipper, commentFlipped, commentLabel;
+var karmaLabel;
 
 background = document.createElement('div');
 background.classList.add('hn-muse-background');
@@ -62,6 +63,12 @@ function track() {
   // change view background
   view.classList.remove('hn-muse-dark');
   view.classList.add('hn-muse-light');
+
+  // karma
+  karmaLabel = document.createElement('h1');
+  karmaLabel.classList.add('hn-karma-label');
+  karmaLabel.innerHTML = 'KARMA';
+  modal.appendChild(karmaLabel);
 
   // point
   pointFlipper = document.createElement('div');
