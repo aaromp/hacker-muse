@@ -25,6 +25,7 @@
   "permissions" : [
     "storage"
   ],
+  "web_accessible_resources": ["images/Y.svg"],
   "content_scripts": [
     {
       "matches": [
