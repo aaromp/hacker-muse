@@ -2,7 +2,7 @@
 
 console.log('\'Allo \'Allo! Content script');
 var background, modal, on, appendModal, detachModal, toggleModal;
-var userview, textfield, button;
+var userview, textfield, button, label;
 
 background = document.createElement('div');
 background.classList.add('hn-muse-background');
@@ -20,10 +20,14 @@ textfield.classList.add('hn-muse-textfield');
 button = document.createElement('button');
 button.classList.add('hn-muse-button');
 
+label = document.createElement('h1');
+label.innerHTML = 'Which user do you want to track?';
+label.classList.add('hn-muse-label');
+
 modal.appendChild(userview);
 userview.appendChild(textfield);
 userview.appendChild(button);
-
+userview.appendChild(label);
 
 appendModal = function() {
   // blur everything in the background
