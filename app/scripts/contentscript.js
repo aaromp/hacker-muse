@@ -11,6 +11,8 @@ modal = document.createElement('div');
 modal.classList.add('hn-muse-modal');
 
 userview = document.createElement('div');
+userview.classList.add('hn-muse-userview');
+
 textfield = document.createElement('input');
 textfield.setAttribute('type', 'text');
 textfield.setAttribute('value', 'default');
