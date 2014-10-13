@@ -41,8 +41,15 @@
   opacity: 0.33;
 }
 
-.hn-muse-userview {
+.hn-muse-light {
+  background: #FFFFFF;
+}
+
+.hn-muse-dark {
   background: #F8F8F2;
+}
+
+.hn-muse-view {
   height: 200px;
   width: 400px;
   -webkit-box-shadow: -3px 0 3px 0 rgba(0,0,0,0.16);
@@ -102,19 +109,34 @@
   left: 25px;
 }
 
-.hn-muse-flipper {
+.hn-karma-flipper {
+  position: absolute;
+  top: 47px;
+  left: 47px;
+}
+
+.hn-point-flipper {
+  position: absolute;
+  top: 47px;
+  left: 267px;
+}
+
+.hn-comment-flipper {
+  position: absolute;
+  top: 47px;
+  left: 429px;
+}
+
+.hn-karma-flipper, .hn-point-flipper, .hn-comment-flipper {
   background: #FFFFFF;
   height: 106px;
   width: 106px;
   border-radius: 10px;
   border-radius: 10px;
   -webkit-box-shadow: -1px 3px 3px 0 rgba(0,0,0,0.16);
-  position: absolute;
-  top: 47px;
-  left: 47px;
 }
 
-.hn-muse-image {
+.hn-muse-logo {
   position: absolute;
   margin: auto;
   top: 0;

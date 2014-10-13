@@ -2,7 +2,8 @@
 
 console.log('\'Allo \'Allo! Content script');
 var background, modal, on, appendModal, detachModal, toggleModal;
-var userview, textfield, button, label, flipper, flipped, image;
+var view, textfield, button, label, flipper, flipped, logo;
+var pointFlipper, pointFlipped, commentFlipper, commentFlipped;
 
 background = document.createElement('div');
 background.classList.add('hn-muse-background');
@@ -12,8 +13,9 @@ modal.classList.add('hn-muse-modal');
 
 /* user view */
 
-userview = document.createElement('div');
-userview.classList.add('hn-muse-userview');
+view = document.createElement('div');
+view.classList.add('hn-muse-view');
+view.classList.add('hn-muse-dark');
 
 textfield = document.createElement('input');
 textfield.setAttribute('type', 'text');
@@ -22,28 +24,57 @@ textfield.classList.add('hn-muse-textfield');
 button = document.createElement('button');
 button.classList.add('hn-muse-button');
 
+
 label = document.createElement('h1');
 label.innerHTML = 'Which user do you want to track?';
 label.classList.add('hn-muse-label');
 
-modal.appendChild(userview);
-userview.appendChild(textfield);
-userview.appendChild(button);
-userview.appendChild(label);
+modal.appendChild(view);
+view.appendChild(textfield);
+view.appendChild(button);
+view.appendChild(label);
 
 flipper = document.createElement('div');
-flipper.classList.add('hn-muse-flipper');
+flipper.classList.add('hn-karma-flipper');
 
 flipped = document.createElement('div');
 flipped.classList.add('hn-muse-flipped');
 
-image = document.createElement('img');
-image.src = chrome.extension.getURL('/images/Y.svg');
-image.classList.add('hn-muse-image');
+logo = document.createElement('img');
+logo.src = chrome.extension.getURL('/images/Y.svg');
+logo.classList.add('hn-muse-logo');
 
 modal.appendChild(flipper);
-flipper.appendChild(image);
+flipper.appendChild(logo);
 flipper.appendChild(flipped);
+
+var track;
+
+track = function() {
+  // remove logo
+  logo = flipper.removeChild(logo);
+
+  // change view background
+  view.classList.remove('hn-muse-dark');
+  view.classList.add('hn-muse-light');
+
+  pointFlipper = document.createElement('div');
+  pointFlipper.classList.add('hn-point-flipper');
+  
+  pointFlipped = document.createElement('div');
+  pointFlipped.classList.add('hn-muse-flipped');
+
+  commentFlipper = document.createElement('div');
+  commentFlipper.classList.add('hn-comment-flipper');
+  
+  commentFlipped = document.createElement('div');
+  commentFlipped.classList.add('hn-muse-flipped');
+};
+
+button.addEventListener('click', function() {
+  console.log(textfield.value);
+  track();
+});
 
 appendModal = function() {
   // blur everything in the background
