@@ -51,6 +51,10 @@ flipper.appendChild(logo);
 flipper.appendChild(flipped);
 
 function track() {
+  // change view background
+  view.classList.remove('hn-muse-dark');
+  view.classList.add('hn-muse-light');
+
   // remove unused elements
   logo = flipper.removeChild(logo);
   textfield = view.removeChild(textfield);
@@ -60,10 +64,6 @@ function track() {
   button.classList.remove('hn-user-button');
   button.classList.add('hn-track-button');
   button.removeEventListener('click', track);
-
-  // change view background
-  view.classList.remove('hn-muse-dark');
-  view.classList.add('hn-muse-light');
 
   // user
   userLabel = document.createElement('h1');
@@ -80,27 +80,31 @@ function track() {
   // point
   pointFlipper = document.createElement('div');
   pointFlipper.classList.add('hn-point-flipper');
+
   pointFlipped = document.createElement('div');
   pointFlipped.classList.add('hn-muse-flipped');
-  view.appendChild(pointFlipper);
-  pointFlipper.appendChild(pointFlipped);
 
   pointLabel = document.createElement('h1');
   pointLabel.classList.add('hn-point-label');
   pointLabel.innerHTML = 'POINTS';
+
+  view.appendChild(pointFlipper);
+  pointFlipper.appendChild(pointFlipped);
   view.appendChild(pointLabel);
 
   // comment
   commentFlipper = document.createElement('div');
   commentFlipper.classList.add('hn-comment-flipper');
+
   commentFlipped = document.createElement('div');
   commentFlipped.classList.add('hn-muse-flipped');
-  view.appendChild(commentFlipper);
-  commentFlipper.appendChild(commentFlipped);
-
+  
   commentLabel = document.createElement('h1');
   commentLabel.classList.add('hn-comment-label');
   commentLabel.innerHTML = 'COMMENTS';
+
+  view.appendChild(commentFlipper);
+  commentFlipper.appendChild(commentFlipped);
   view.appendChild(commentLabel);
 }
 
