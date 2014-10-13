@@ -2,7 +2,7 @@
 
 console.log('\'Allo \'Allo! Content script');
 var background, modal, on, appendModal, detachModal, toggleModal;
-var userview, textfield, button, label, flipper, image;
+var userview, textfield, button, label, flipper, flipped, image;
 
 background = document.createElement('div');
 background.classList.add('hn-muse-background');
@@ -31,9 +31,19 @@ userview.appendChild(textfield);
 userview.appendChild(button);
 userview.appendChild(label);
 
+flipper = document.createElement('div');
+flipper.classList.add('hn-muse-flipper');
+
+flipped = document.createElement('div');
+flipped.classList.add('hn-muse-flipped');
+
 image = document.createElement('img');
 image.src = chrome.extension.getURL('/images/Y.svg');
-modal.appendChild(image);
+image.classList.add('hn-muse-image');
+
+modal.appendChild(flipper);
+flipper.appendChild(image);
+flipper.appendChild(flipped);
 
 appendModal = function() {
   // blur everything in the background

@@ -101,3 +101,34 @@
   top: 55px;
   left: 25px;
 }
+
+.hn-muse-flipper {
+  background: #FFFFFF;
+  height: 106px;
+  width: 106px;
+  border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: -1px 3px 3px 0 rgba(0,0,0,0.16);
+  position: absolute;
+  top: 47px;
+  left: 47px;
+}
+
+.hn-muse-image {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.hn-muse-flipped {
+  background: rgba(246,246,239,0.80);
+  height: 53px;
+  width: 106px;
+  border-radius: 0 0 10px 10px;
+  position: absolute;
+  top: 53px;
+  left: 0;
+}
