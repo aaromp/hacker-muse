@@ -25,7 +25,10 @@
   "permissions" : [
     "storage"
   ],
-  "web_accessible_resources": ["images/Y.svg"],
+  "web_accessible_resources": [
+    "images/Y.svg",
+    "images/link.svg"
+  ],
   "content_scripts": [
     {
       "matches": [

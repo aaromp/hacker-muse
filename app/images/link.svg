@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="12px" viewBox="0 0 20 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.1 (8751) - http://www.bohemiancoding.com/sketch -->
+    <title>link</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Material" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Tracking" sketch:type="MSArtboardGroup" transform="translate(-214.000000, -24.000000)" fill="#50E3C2">
+            <path d="M228,24 L225,24 L225,25.89813 L228,25.89813 C230.2635,25.89813 232.0995,27.73413 232.0995,30 C232.0995,32.2621 230.2635,34.0981 228,34.0981 L225,34.0981 L225,36 L228,36 C231.3145,36 234,33.3121 234,30 C234,26.68414 231.3145,24 228,24 L228,24 Z M215.89948,30 C215.89948,27.73413 217.7355,25.89813 220,25.89813 L223,25.89813 L223,24 L220,24 C216.68649,24 214,26.68414 214,30 C214,33.3121 216.68649,36 220,36 L223,36 L223,34.0981 L220,34.0981 C217.7355,34.0981 215.89948,32.2621 215.89948,30 L215.89948,30 Z M220,31 L228,31 L228,29 L220,29 L220,31 L220,31 Z" id="link" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

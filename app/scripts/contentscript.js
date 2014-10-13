@@ -2,7 +2,7 @@
 
 console.log('\'Allo \'Allo! Content script');
 var background, modal, on, appendModal, detachModal, toggleModal;
-var view, textfield, button, label, flipper, flipped, logo;
+var view, textfield, button, label, flipper, flipped, image;
 var pointFlipper, pointFlipped, pointLabel;
 var commentFlipper, commentFlipped, commentLabel;
 var userLabel, mainLabel;
@@ -42,12 +42,12 @@ flipper.classList.add('hn-karma-flipper');
 flipped = document.createElement('div');
 flipped.classList.add('hn-muse-flipped');
 
-logo = document.createElement('img');
-logo.src = chrome.extension.getURL('/images/Y.svg');
-logo.classList.add('hn-muse-logo');
+image = document.createElement('img');
+image.src = chrome.extension.getURL('/images/Y.svg');
+image.classList.add('hn-muse-logo');
 
 modal.appendChild(flipper);
-flipper.appendChild(logo);
+flipper.appendChild(image);
 flipper.appendChild(flipped);
 
 function track() {
@@ -55,10 +55,16 @@ function track() {
   view.classList.remove('hn-muse-dark');
   view.classList.add('hn-muse-light');
 
-  // remove unused elements
-  logo = flipper.removeChild(logo);
+  // repurpose label
   textfield = view.removeChild(textfield);
   label = view.removeChild(label);
+
+  // repurpose image
+  image = flipper.removeChild(image);
+  image.src = chrome.extension.getURL('/images/link.svg');
+  image.classList.remove('hn-muse-logo');
+  image.classList.add('hn-muse-link');
+  view.appendChild(image);
 
   // repurpose button
   button.classList.remove('hn-user-button');

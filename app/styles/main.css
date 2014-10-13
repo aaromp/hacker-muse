@@ -151,6 +151,12 @@
   bottom: 0;
 }
 
+.hn-muse-link {
+  position: absolute;
+  top: 24px;
+  left: 14px;
+}
+
 .hn-muse-flipped {
   background: rgba(246,246,239,0.80);
   height: 53px;
