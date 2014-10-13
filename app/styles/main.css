@@ -168,7 +168,7 @@
   left: 15px;
 }
 
-.hn-karma-label {
+.hn-main-label {
   color: #FFFFFF;
   position: absolute;
   top: 150px;
@@ -187,7 +187,7 @@
   left: 220px;
 }
 
-.hn-muse-label, .hn-user-label, .hn-karma-label, .hn-point-label, .hn-comment-label {
+.hn-muse-label, .hn-user-label, .hn-main-label, .hn-point-label, .hn-comment-label {
   font-family: Futura-Medium;
   font-size: 20px;
   line-height: 27px;

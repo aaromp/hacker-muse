@@ -5,7 +5,7 @@ var background, modal, on, appendModal, detachModal, toggleModal;
 var view, textfield, button, label, flipper, flipped, logo;
 var pointFlipper, pointFlipped, pointLabel;
 var commentFlipper, commentFlipped, commentLabel;
-var userLabel, karmaLabel;
+var userLabel, mainLabel;
 
 background = document.createElement('div');
 background.classList.add('hn-muse-background');
@@ -72,10 +72,10 @@ function track() {
   modal.appendChild(userLabel);
 
   // karma
-  karmaLabel = document.createElement('h1');
-  karmaLabel.classList.add('hn-karma-label');
-  karmaLabel.innerHTML = 'KARMA';
-  modal.appendChild(karmaLabel);
+  mainLabel = document.createElement('h1');
+  mainLabel.classList.add('hn-main-label');
+  mainLabel.innerHTML = 'KARMA';
+  modal.appendChild(mainLabel);
 
   // point
   pointFlipper = document.createElement('div');
@@ -106,6 +106,10 @@ function track() {
   view.appendChild(commentFlipper);
   commentFlipper.appendChild(commentFlipped);
   view.appendChild(commentLabel);
+}
+
+function select() {
+
 }
 
 button.addEventListener('click', track);
