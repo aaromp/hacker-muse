@@ -3,7 +3,8 @@
 console.log('\'Allo \'Allo! Content script');
 var background, modal, on, appendModal, detachModal, toggleModal;
 var view, textfield, button, label, flipper, flipped, logo;
-var pointFlipper, pointFlipped, commentFlipper, commentFlipped;
+var pointFlipper, pointFlipped, pointLabel;
+var commentFlipper, commentFlipped, commentLabel;
 
 background = document.createElement('div');
 background.classList.add('hn-muse-background');
@@ -62,25 +63,31 @@ function track() {
   view.classList.remove('hn-muse-dark');
   view.classList.add('hn-muse-light');
 
+  // point
   pointFlipper = document.createElement('div');
   pointFlipper.classList.add('hn-point-flipper');
-  
   pointFlipped = document.createElement('div');
   pointFlipped.classList.add('hn-muse-flipped');
-
   view.appendChild(pointFlipper);
-  // pointFlipper.appendChild(logo);
   pointFlipper.appendChild(pointFlipped);
 
+  pointLabel = document.createElement('h1');
+  pointLabel.classList.add('hn-point-label');
+  pointLabel.innerHTML = 'POINTS';
+  view.appendChild(pointLabel);
+
+  // comment
   commentFlipper = document.createElement('div');
   commentFlipper.classList.add('hn-comment-flipper');
-  
   commentFlipped = document.createElement('div');
   commentFlipped.classList.add('hn-muse-flipped');
-
   view.appendChild(commentFlipper);
-  // commentFlipper.appendChild(logo);
   commentFlipper.appendChild(commentFlipped);
+
+  commentLabel = document.createElement('h1');
+  commentLabel.classList.add('hn-comment-label');
+  commentLabel.innerHTML = 'COMMENTS';
+  view.appendChild(commentLabel);
 }
 
 button.addEventListener('click', track);

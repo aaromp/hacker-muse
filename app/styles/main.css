@@ -109,10 +109,7 @@
 }
 
 .hn-muse-label {
-  font-family: Futura-Medium;
-  font-size: 20px;
   color: #FF913B;
-  line-height: 27px;
   position: absolute;
   top: 55px;
   left: 25px;
@@ -162,4 +159,22 @@
   position: absolute;
   top: 53px;
   left: 0;
+}
+
+.hn-point-label {
+  position: absolute;
+  top: 150px;
+  left: 80px;
+}
+
+.hn-comment-label {
+  position: absolute;
+  top: 150px;
+  left: 220px;
+}
+
+.hn-muse-label, .hn-point-label, .hn-comment-label {
+  font-family: Futura-Medium;
+  font-size: 20px;
+  line-height: 27px;
 }
