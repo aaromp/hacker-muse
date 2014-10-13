@@ -45,8 +45,24 @@
   background: #F8F8F2;
   height: 200px;
   width: 400px;
-  -webkit-box-shadow: -3px 3px 3px 0 rgba(0,0,0,0.16);
+  -webkit-box-shadow: -3px 0 3px 0 rgba(0,0,0,0.16);
   position: absolute;
   top: 0;
   left: 200px;
+}
+
+.hn-muse-textfield {
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: transparent;
+  border-style: inset;
+  outline: 0;
+  -webkit-appearance: none;
+  height: 50px;
+  width: 250px;
+  background: #FFFFFF;
+  -webkit-box-shadow: -1px 3px 3px 0 rgba(0,0,0,0.16);
+  position: absolute;
+  top: 100px;
+  left: 50px;
 }

@@ -15,7 +15,10 @@ userview.classList.add('hn-muse-userview');
 
 textfield = document.createElement('input');
 textfield.setAttribute('type', 'text');
-textfield.setAttribute('value', 'default');
+// textfield.setAttribute('value', 'default');
+textfield.classList.add('hn-muse-textfield');
+
+
 button = document.createElement('button');
 
 modal.appendChild(userview);
