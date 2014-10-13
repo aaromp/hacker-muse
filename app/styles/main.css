@@ -1,3 +1,165 @@
-body {
-  padding: 20px;
+.hn-muse-blur, .hn-muse-modal, .hn-muse-on {
+  -webkit-transition: all 0.4s ease;
+}
+
+.hn-muse-blur {
+  -webkit-filter: blur(2px) grayscale(50%);
+  -webkit-transform: scale(0.9)
+}
+
+.hn-muse-background {
+  /*opacity: 0.75;*/
+  /*background-color: #000;*/
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.hn-muse-modal.hn-muse-on  {
+  -webkit-transform: scale(1);
+  -webkit-box-shadow: -1px 6px 6px rgba(0, 0, 0, 0.19);
+  opacity: 1;
+}
+
+.hn-muse-modal {
+  background: #FF913B;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  z-index: 1001;
+  margin: auto;
+  position: absolute;
+  width: 600px;
+  height: 200px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  -webkit-transform: scale(0.8);
+  opacity: 0.33;
+}
+
+.hn-muse-light {
+  background: #FFFFFF;
+}
+
+.hn-muse-dark {
+  background: #F8F8F2;
+}
+
+.hn-muse-view {
+  height: 200px;
+  width: 400px;
+  -webkit-box-shadow: -3px 0 3px 0 rgba(0,0,0,0.16);
+  position: absolute;
+  top: 0;
+  left: 200px;
+}
+
+.hn-muse-textfield {
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: transparent;
+  border-style: inset;
+  outline: 0;
+  height: 50px;
+  width: 250px;
+  -webkit-box-sizing: border-box;
+  padding: 0 15px;
+  font-family: Futura-Medium;
+  font-size: 20px;
+  color: #000000;
+  line-height: 27px;
+  background: #FFFFFF;
+  -webkit-box-shadow: -1px 3px 3px 0 rgba(0,0,0,0.16);
+  position: absolute;
+  top: 100px;
+  left: 50px;
+}
+
+.hn-user-button {
+  position: absolute;
+  top: 100px;
+  left: 325px;
+}
+
+.hn-track-button {
+  position: absolute;
+  top: 75px;
+  left: -17px;
+}
+
+.hn-user-button, .hn-track-button {
+  background: #50E3C2;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  border-color: transparent;
+  -webkit-box-shadow: -1px 3px 3px 0 rgba(0,0,0,0.16);
+}
+
+.hn-user-button:focus, .hn-track-button:focus {
+  outline: 0;
+}
+
+.hn-user-button:active, .hn-track-button:active {
+  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.12);
+}
+
+.hn-muse-label {
+  font-family: Futura-Medium;
+  font-size: 20px;
+  color: #FF913B;
+  line-height: 27px;
+  position: absolute;
+  top: 55px;
+  left: 25px;
+}
+
+.hn-karma-flipper {
+  position: absolute;
+  top: 47px;
+  left: 47px;
+}
+
+.hn-point-flipper {
+  position: absolute;
+  top: 47px;
+  left: 67px;
+}
+
+.hn-comment-flipper {
+  position: absolute;
+  top: 47px;
+  left: 229px;
+}
+
+.hn-karma-flipper, .hn-point-flipper, .hn-comment-flipper {
+  background: #FFFFFF;
+  height: 106px;
+  width: 106px;
+  border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: -1px 3px 3px 0 rgba(0,0,0,0.16);
+}
+
+.hn-muse-logo {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.hn-muse-flipped {
+  background: rgba(246,246,239,0.80);
+  height: 53px;
+  width: 106px;
+  border-radius: 0 0 10px 10px;
+  position: absolute;
+  top: 53px;
+  left: 0;
 }

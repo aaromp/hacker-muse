@@ -1,49 +1,45 @@
 {
-    "name": "Hacker Muse",
-    "version": "0.0.6",
-    "manifest_version": 2,
-    "content_security_policy": "script-src 'self' https://cdn.firebase.com https://*.firebaseio.com; object-src 'self'",
-    "description": "A ticker designed to inspire you to post to hacker news.",
-    "icons": {
-        "16": "images/icon-16.png",
-        "128": "images/icon-128.png"
+  "name": "__MSG_appName__",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "__MSG_appDescription__",
+  "icons": {
+    "16": "images/icon-16.png",
+    "128": "images/icon-128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": [
+      "scripts/chromereload.js",
+      "scripts/background.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "images/icon-19.png",
+      "38": "images/icon-38.png"
     },
-    "default_locale": "en",
-    "background": {
-        "scripts": [
-            "scripts/firebase.js",
-            "scripts/chromereload.js",
-            "scripts/background.js"
-        ]
-    },
-    "permissions": [
-        "storage",
+    "default_title": "hacker muse"
+  },
+  "options_page": "options.html",
+  "permissions" : [
+    "storage"
+  ],
+  "web_accessible_resources": ["images/Y.svg"],
+  "content_scripts": [
+    {
+      "matches": [
         "http://*/*",
         "https://*/*"
-    ],
-    "browser_action": {
-        "default_icon": {
-            "19": "images/icon-19.png",
-            "38": "images/icon-38.png"
-        },
-        "default_title": "hacker muse",
-        "default_popup": "popup.html"
-    },
-    "options_page": "options.html",
-    "content_scripts": [
-        {
-            "matches": [
-                "http://*/*",
-                "https://*/*"
-            ],
-            "css": [
-                "styles/main.css"
-            ],
-            "js": [
-                "scripts/contentscript.js"
-            ],
-            "run_at": "document_end",
-            "all_frames": false
-        }
-    ]
+      ],
+      "css": [
+        "styles/main.css"
+      ],
+      "js": [
+        "scripts/contentscript.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ]
 }
