@@ -1,5 +1,14 @@
 'use strict';
 
+chrome.storage.sync.get(['hackerMuseUser', 'hackerMuseUserData', 'hackerMuseRecentPostData'], function(data){
+  console.log('get hackerMuseUser from Content');
+  console.log(data);
+});
+
+chrome.runtime.sendMessage({method: 'setHackerMuseUser', user: 'JDoty'}, function(response) {
+  console.log('response from emitted event is: ', response.response);
+});
+
 console.log('\'Allo \'Allo! Content script');
 
 var background, modal, on, appendModal, detachModal, toggleModal;
