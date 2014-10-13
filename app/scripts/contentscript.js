@@ -5,7 +5,7 @@ var background, modal, on, appendModal, detachModal, toggleModal;
 var view, textfield, button, label, flipper, flipped, logo;
 var pointFlipper, pointFlipped, pointLabel;
 var commentFlipper, commentFlipped, commentLabel;
-var karmaLabel;
+var userLabel, karmaLabel;
 
 background = document.createElement('div');
 background.classList.add('hn-muse-background');
@@ -51,18 +51,25 @@ flipper.appendChild(logo);
 flipper.appendChild(flipped);
 
 function track() {
-  console.log('track!');
   // remove unused elements
   logo = flipper.removeChild(logo);
   textfield = view.removeChild(textfield);
+  label = view.removeChild(label);
+
+  // repurpose button
   button.classList.remove('hn-user-button');
   button.classList.add('hn-track-button');
   button.removeEventListener('click', track);
-  label = view.removeChild(label);
 
   // change view background
   view.classList.remove('hn-muse-dark');
   view.classList.add('hn-muse-light');
+
+  // user
+  userLabel = document.createElement('h1');
+  userLabel.classList.add('hn-user-label');
+  userLabel.innerHTML = textfield.value;
+  modal.appendChild(userLabel);
 
   // karma
   karmaLabel = document.createElement('h1');
