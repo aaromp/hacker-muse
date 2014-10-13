@@ -10,17 +10,20 @@ modal = document.createElement('div');
 modal.classList.add('hn-muse-modal');
 
 appendModal = function() {
-  // add background overlay
-  document.body.appendChild(background);
-
   // blur everything in the background
   Array.prototype.forEach.call(document.body.children, function(child) {
-    console.log(child);
     child.classList.add('hn-muse-blur');
   });
 
+  // add background overlay
+  document.body.appendChild(background);
+
   // append modal
   document.body.appendChild(modal);
+  setTimeout(function(){
+    console.log('turning on dat class');
+    modal.classList.add('hn-muse-on');
+  }, 10);
 };
 
 detachModal = function() {
@@ -34,6 +37,7 @@ detachModal = function() {
 
   // remove modal
   modal = document.body.removeChild(modal);
+  modal.classList.remove('hn-muse-on');
 };
 
 toggleModal = function(message) {
