@@ -109,13 +109,17 @@
 }
 
 .hn-muse-label {
-  font-family: Futura-Medium;
-  font-size: 20px;
   color: #FF913B;
-  line-height: 27px;
   position: absolute;
   top: 55px;
   left: 25px;
+}
+
+.hn-muse-post {
+  color: #50E3C2;
+  position: absolute;
+  top: 0;
+  left: 41px;
 }
 
 .hn-karma-flipper {
@@ -154,6 +158,12 @@
   bottom: 0;
 }
 
+.hn-muse-link {
+  position: absolute;
+  top: 20px;
+  left: 14px;
+}
+
 .hn-muse-flipped {
   background: rgba(246,246,239,0.80);
   height: 53px;
@@ -162,4 +172,36 @@
   position: absolute;
   top: 53px;
   left: 0;
+}
+
+.hn-user-label {
+  color: #FFFFFF;
+  position: absolute;
+  top: 0;
+  left: 15px;
+}
+
+.hn-main-label {
+  color: #FFFFFF;
+  position: absolute;
+  top: 150px;
+  left: 60px;
+}
+
+.hn-point-label {
+  position: absolute;
+  top: 150px;
+  left: 80px;
+}
+
+.hn-comment-label {
+  position: absolute;
+  top: 150px;
+  left: 220px;
+}
+
+.hn-muse-label, .hn-muse-post, .hn-user-label, .hn-main-label, .hn-point-label, .hn-comment-label {
+  font-family: Futura-Medium;
+  font-size: 20px;
+  line-height: 27px;
 }
