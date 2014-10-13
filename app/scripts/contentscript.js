@@ -51,8 +51,11 @@ flipper.appendChild(flipped);
 var track;
 
 track = function() {
-  // remove logo
+  // remove unused elements
   logo = flipper.removeChild(logo);
+  textfield = view.removeChild(textfield);
+  button = view.removeChild(button);
+  label = view.removeChild(label);
 
   // change view background
   view.classList.remove('hn-muse-dark');
@@ -64,11 +67,19 @@ track = function() {
   pointFlipped = document.createElement('div');
   pointFlipped.classList.add('hn-muse-flipped');
 
+  view.appendChild(pointFlipper);
+  // pointFlipper.appendChild(logo);
+  pointFlipper.appendChild(pointFlipped);
+
   commentFlipper = document.createElement('div');
   commentFlipper.classList.add('hn-comment-flipper');
   
   commentFlipped = document.createElement('div');
   commentFlipped.classList.add('hn-muse-flipped');
+
+  view.appendChild(commentFlipper);
+  // commentFlipper.appendChild(logo);
+  commentFlipper.appendChild(commentFlipped);
 };
 
 button.addEventListener('click', function() {

@@ -118,13 +118,13 @@
 .hn-point-flipper {
   position: absolute;
   top: 47px;
-  left: 267px;
+  left: 67px;
 }
 
 .hn-comment-flipper {
   position: absolute;
   top: 47px;
-  left: 429px;
+  left: 229px;
 }
 
 .hn-karma-flipper, .hn-point-flipper, .hn-comment-flipper {
