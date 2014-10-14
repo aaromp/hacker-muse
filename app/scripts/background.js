@@ -11,6 +11,7 @@ var users = new Firebase('https://hacker-news.firebaseio.com/v0/user');
 //get user
 var getUser = function(success, unset, context){
   chrome.storage.sync.get('hackerMuseUser', function(data){
+    console.log('data inside getUser is: ', data);
     var keys = Object.keys(data);
     if (keys.length === 0){
       unset.call(context);
@@ -23,7 +24,9 @@ var getUser = function(success, unset, context){
 //set user
 var setUser = function(userName, cb, context){
   chrome.storage.sync.set({'hackerMuseUser': userName}, function(){
-    cb.call(context || null);
+    if (cb !== undefined){
+     cb.call(context || null);
+    }
   });
 };
 
@@ -34,6 +37,15 @@ var listenToUser = function(user, success, failure){
     if (data.val() === null) failure();
     else success(data.val());
   });
+};
+
+var removeUserListener = function(user, cb){
+  if ( cb ) {
+    users.child(user).off('value', cb);
+  }
+  else { 
+    users.child(user).off('value');
+  }
 };
 
 //callback is invoked whenever change to user's most recent post occurs
@@ -67,38 +79,59 @@ var mostRecentPost = function(user, success, failure){
   });
 };
 
-//here are example invocations of those functions
-listenToUser('neonkiwi', function(data){
-  console.log('user data is: ', data);
-});
-
-mostRecentPost('neonkiwi', function(data){
-  console.log('post data is: ', data);
-}, function(){
-  console.log('inside failure cb of listenToPost');
-});
-
-
-
-
-
-
-
-
-
-console.log('\'Allo \'Allo! Event Page for Browser Action');
-
-var on;
-
-on = false;
-
-chrome.browserAction.onClicked.addListener(function(tab){
-  chrome.tabs.sendMessage(tab.id, {modal: on}, function(response) {
-    on = response.modal;
+var removePostListeners = function(user){
+  users.child(user).on('value', function(data){
+    data = data.val();
+    if ( data !== null ){
+      console.log('inside removepost listeners data is: ', data);
+      var submissions  = data.submitted;
+      for ( var i = 0; i < submissions.length; i++ ){
+        items.child(submissions[i]).off('value');
+      }
+    }
+    users.child(user).off('value');
   });
-});
+};
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
-  on = !message.modal;
-  sendResponse({modal: !on});
+  console.log('message received in background.js');
+  //route message
+  if ( message.method === 'setHackerMuseUser' ){
+    //check to see if a user is already set 
+    getUser(function(name){
+      console.log('name is: ', name);
+
+      //if user exists and setting to a different name
+      if (name !== message.user){
+        //remove all existing callbacks
+        removePostListeners(name);
+        removeUserListener(name);
+
+        //and register cb's for new user
+        setUser(message.user, function(){
+          listenToUser(message.user, function(data){
+            chrome.storage.sync.set({'hackerMuseUserData': data});
+          });
+          mostRecentPost(message.user, function(data){
+            chrome.storage.sync.set({'hackerMuseRecentPostData': data});
+          });
+        });
+        //send response indicating what work was done
+        sendResponse({response: 'user changed'});
+      }
+    }, function(){
+      //if no user exists
+      //then set user and register firebase cb's
+      setUser(message.user, function(){
+          listenToUser(message.user, function(data){
+            chrome.storage.sync.set({'hackerMuseUserData': data});
+          });
+          mostRecentPost(message.user, function(data){
+            chrome.storage.sync.set({'hackerMuseRecentPostData': data});
+          });
+      });
+      //send response indicating what work was done
+      sendResponse({response: 'user set'});
+    });
+  }
 });
