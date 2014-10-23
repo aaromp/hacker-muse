@@ -214,18 +214,18 @@
   /*-webkit-box-shadow: -1px 3px 3px 0 rgba(0,0,0,0.16);*/
 }
 
-.top-front, .top-back {
+.front, .back {
   /*background: orange;*/
   height: 106px;
   width: 106px;
   position: absolute;
 }
 
-.top-front {
+.front {
   z-index: 1;
 }
 
-.top-front-overlay, .top-back-overlay {
+.front-overlay, .back-overlay {
   height: 53px;
   width: 106px;
   position: absolute;
@@ -245,13 +245,13 @@
   -webkit-transition: all 0.4s ease;
 }
 
-.top-front-overlay {
+.front-overlay {
   background: pink;
   -webkit-backface-visibility: hidden;
   z-index: 2;
 }
 
-.top-back-overlay {
+.back-overlay {
   background: yellow;
 }
 

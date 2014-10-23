@@ -1,27 +1,44 @@
 'use strict';
 
-var Flipper;
+var Flipper, Tab;
+
+Tab = function() {
+  var front, back, frontOverlay, backOverlay;
+
+  this.element = document.createElement('div');
+  this.element.classList.add('tab');
+
+  front = document.createElement('div');
+  front.classList.add('front');
+
+  back = document.createElement('div');
+  back.classList.add('back');
+
+  frontOverlay = document.createElement('div');
+  frontOverlay.classList.add('front-overlay');
+
+  backOverlay = document.createElement('div');
+  backOverlay.classList.add('back-overlay');
+
+  this.element.appendChild(frontOverlay);
+  this.element.appendChild(backOverlay);
+  frontOverlay.appendChild(front);
+  backOverlay.appendChild(back);
+};
 
 Flipper = function(value) {
-  var top, topFront, topBack, topFrontOverlay, topBackOverlay;
-  // var bottomFront, bottomBack, next, nextFront, nextBack;
+  var topTab, bottomTab, nextTab;
 
   this.value = value;
   this.element = document.createElement('div');
   this.element.classList.add('flipper');
 
 
-  /* create top tab */
-  top = document.createElement('div');
-  top.classList.add('tab');
-  topFront = document.createElement('div');
-  topFront.classList.add('top-front');
-  topBack = document.createElement('div');
-  topBack.classList.add('top-back');
-  topFrontOverlay = document.createElement('div');
-  topFrontOverlay.classList.add('top-front-overlay');
-  topBackOverlay = document.createElement('div');
-  topBackOverlay.classList.add('top-back-overlay');
+  /* create tab */
+  topTab = new Tab();
+
+  this.element.appendChild(topTab.element);
+
 
   // bottom = document.createElement('div');
   // bottom.classList.add('tab');
@@ -42,11 +59,7 @@ Flipper = function(value) {
   // nextBack.classList.add('flipper-tab-front');
 
 
-  this.element.appendChild(top);
-  top.appendChild(topFrontOverlay);
-  top.appendChild(topBackOverlay);
-  topFrontOverlay.appendChild(topFront);
-  topBackOverlay.appendChild(topBack);
+
   setTimeout(function() {
     console.log('flipped?');
     window.getComputedStyle(top).transition; // make sure transform is loaded
