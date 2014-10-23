@@ -9,9 +9,11 @@ Tab = function() {
   this.element.classList.add('tab');
 
   front = document.createElement('div');
+  front.innerHTML = 'front';
   front.classList.add('front');
 
   back = document.createElement('div');
+  back.innerHTML = 'back';
   back.classList.add('back');
 
   frontOverlay = document.createElement('div');
@@ -61,9 +63,8 @@ Flipper = function(value) {
 
 
   setTimeout(function() {
-    console.log('flipped?');
-    window.getComputedStyle(top).transition; // make sure transform is loaded
-    top.classList.add('flipped');
+    // window.getComputedStyle(top).transition; // make sure transform is loaded
+    // top.classList.add('flipped');
   }, 7500);
   
 
