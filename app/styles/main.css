@@ -249,6 +249,7 @@
 }
 
 .back {
+  top: -53px;
   background: #F6F6EF;
   opacity: 0.8;
 }
@@ -266,8 +267,10 @@
 }
 
 .back-overlay {
+  top: 53px;
+  -webkit-transform-origin: 50% 0 0;
   -webkit-transform: rotateX(-180deg);
-  -webkit-backface-visibility: hidden;
+  /*-webkit-backface-visibility: hidden;*/
   border-radius: 0 0 10px 10px;
 }
 
