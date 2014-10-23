@@ -230,12 +230,11 @@
 
 
 .tab.flipped {
-  /*-webkit-transform: rotateX(-180deg);*/
+  -webkit-transform: rotateX(-180deg);
   /*-webkit-transform-origin: 50% 50% 0;*/
 }
 
 .front, .back {
-  /*background: orange;*/
   height: 106px;
   width: 106px;
   position: absolute;
@@ -243,11 +242,11 @@
   justify-content: center;
   align-items: center;
 }
-
+/*
 .front {
-  /*background: pink;*/
+  background: pink;
 }
-
+*/
 .back {
   top: -53px;
   background: #F6F6EF;
@@ -263,6 +262,7 @@
 
 .front-overlay {
   border-radius: 10px 10px 0 0;
+  -webkit-backface-visibility: hidden;
   z-index: 2;
 }
 
@@ -270,7 +270,7 @@
   top: 53px;
   -webkit-transform-origin: 50% 0 0;
   -webkit-transform: rotateX(-180deg);
-  /*-webkit-backface-visibility: hidden;*/
+  -webkit-backface-visibility: hidden;
   border-radius: 0 0 10px 10px;
 }
 

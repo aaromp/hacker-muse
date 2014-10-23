@@ -3,18 +3,18 @@
 var Flipper, Tab;
 
 Tab = function() {
-  var front, back, frontOverlay, backOverlay;
+  var frontOverlay, backOverlay;
+
+  this.flipped = false;
 
   this.element = document.createElement('div');
   this.element.classList.add('tab');
 
-  front = document.createElement('div');
-  front.innerHTML = 'front';
-  front.classList.add('front');
+  this.front = document.createElement('div');
+  this.front.classList.add('front');
 
-  back = document.createElement('div');
-  back.innerHTML = 'back';
-  back.classList.add('back');
+  this.back = document.createElement('div');
+  this.back.classList.add('back');
 
   frontOverlay = document.createElement('div');
   frontOverlay.classList.add('front-overlay');
@@ -24,8 +24,31 @@ Tab = function() {
 
   this.element.appendChild(frontOverlay);
   this.element.appendChild(backOverlay);
-  frontOverlay.appendChild(front);
-  backOverlay.appendChild(back);
+  frontOverlay.appendChild(this.front);
+  backOverlay.appendChild(this.back);
+};
+
+Tab.prototype.setFront = function(content) {
+  this.front.innerHTML = content;
+};
+
+Tab.prototype.setBack = function(content) {
+  this.back.innerHTML = content;
+};
+
+Tab.prototype.toggleDirection = function() {
+  this.flipped = !this.flipped;
+};
+
+Tab.prototype.flip = function() {
+  // if flipped, flip up otherwise, flip down
+  if (this.flipped) {
+    
+  } else {
+    window.getComputedStyle(this.element).transition; // make sure transform is loaded
+    this.element.classList.add('flipped');
+    console.log(this.element.classlist);
+  }
 };
 
 Flipper = function(value) {
@@ -35,46 +58,23 @@ Flipper = function(value) {
   this.element = document.createElement('div');
   this.element.classList.add('flipper');
 
-
   /* create tab */
   topTab = new Tab();
+  topTab.setFront('front');
+  topTab.setBack('back');
+  bottomTab = new Tab();
+  nextTab = new Tab();
 
   this.element.appendChild(topTab.element);
+  // this.element.appendChild(bottomTab.element);
+  // this.element.appendChild(nextTab.element);
 
-
-  // bottom = document.createElement('div');
-  // bottom.classList.add('tab');
-  // bottomFront = document.createElement('div');
-  // bottomFront.classList.add('bottom-front');
-  // bottomFront.classList.add('flipper-tab-back');
-  // bottomBack = document.createElement('div');
-  // bottomBack.classList.add('bottom-back');
-  // bottomBack.classList.add('flipper-tab-front');
-
-  // next = document.createElement('div');
-  // next.classList.add('tab');
-  // nextFront = document.createElement('div');
-  // nextFront.classList.add('next-front');
-  // nextFront.classList.add('flipper-tab-back');
-  // nextBack = document.createElement('div');
-  // nextBack.classList.add('next-back');
-  // nextBack.classList.add('flipper-tab-front');
-
-
-
-  setTimeout(function() {
-    // window.getComputedStyle(top).transition; // make sure transform is loaded
-    // top.classList.add('flipped');
-  }, 7500);
-  
-
-  // this.element.appendChild(bottom);
-  // bottom.appendChild(bottomFront);
-  // bottom.appendChild(bottomBack);
-
-  // this.element.appendChild(next);
-  // next.appendChild(nextFront);
-  // next.appendChild(nextBack);
+  window.addEventListener('keyup', function(e) {
+    if(e.keyCode === 40) {
+      console.log('flipper!');
+      topTab.flip();
+    }
+  });
 };
 
 Flipper.prototype.valueOf = function() {
