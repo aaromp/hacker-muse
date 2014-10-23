@@ -145,7 +145,6 @@
   height: 106px;
   width: 106px;
   border-radius: 10px;
-  border-radius: 10px;
   -webkit-box-shadow: -1px 3px 3px 0 rgba(0,0,0,0.16);
 }
 
@@ -207,7 +206,36 @@
 }
 
 .flipper {
-  background: #000000;
+  /*background: #000000;*/
   height: 106px;
   width: 106px;
+  /*-webkit-transform-origin: 50% 0 0;*/
+  /*-webkit-box-shadow: -1px 3px 3px 0 rgba(0,0,0,0.16);*/
+}
+
+.flipper-tab-front, .flipper-tab-back {
+  height: 53px;
+  width: 106px;
+  position: absolute;
+  overflow: hidden;
+  border-radius: 0 0 10px 10px;
+  opacity: 0.33;
+}
+.tab, .flipped {
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: all 0.4s ease;
+}
+
+.flipper-tab-front {
+  background: pink;
+  -webkit-backface-visibility: hidden;
+}
+
+.flipper-tab-back {
+  background: yellow;
+}
+
+.tab.flipped {
+  -webkit-transform: rotateX(-180deg);
+  -webkit-transform-origin: 50% 0 0;
 }

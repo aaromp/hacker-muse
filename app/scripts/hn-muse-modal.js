@@ -129,7 +129,7 @@ appendModal = function() {
 
   // append modal
   document.body.appendChild(modal);
-  window.getComputedStyle(modal).transform; // make sure transform is loaded
+  window.getComputedStyle(modal).transition; // make sure transform is loaded
   modal.classList.add('hn-muse-on');
 };
 
