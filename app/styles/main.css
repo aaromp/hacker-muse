@@ -205,3 +205,9 @@
   font-size: 20px;
   line-height: 27px;
 }
+
+.flipper {
+  background: #000000;
+  height: 106px;
+  width: 106px;
+}

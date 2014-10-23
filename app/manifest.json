@@ -40,8 +40,9 @@
         "styles/main.css"
       ],
       "js": [
-        "scripts/contentscript.js",
-        "scripts/hn-muse-modal.js"
+        "scripts/flipper.js",
+        "scripts/hn-muse-modal.js",
+        "scripts/contentscript.js"
       ],
       "run_at": "document_end",
       "all_frames": false

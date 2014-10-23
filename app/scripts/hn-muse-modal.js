@@ -1,15 +1,10 @@
 'use strict';
 
-console.log('\'Allo \'Allo! Content script');
-
-var background, modal, on, appendModal, detachModal, toggleModal;
+var modal, on, appendModal, detachModal, toggleModal;
 var view, textfield, button, label, flipper, flipped, image;
 var pointFlipper, pointFlipped, pointLabel;
 var commentFlipper, commentFlipped, commentLabel;
 var userLabel, mainLabel;
-
-background = document.createElement('div');
-background.classList.add('hn-muse-background');
 
 modal = document.createElement('div');
 modal.classList.add('hn-muse-modal');
@@ -130,6 +125,8 @@ appendModal = function() {
   // add background overlay
   document.body.appendChild(background);
 
+  document.body.appendChild(thingy.element);
+
   // append modal
   document.body.appendChild(modal);
   window.getComputedStyle(modal).transform; // make sure transform is loaded
@@ -144,6 +141,7 @@ detachModal = function() {
 
   // remove background overlay
   background = document.body.removeChild(background);
+  thingy.element = document.body.removeChild(thingy.element);
 
   // remove modal
   modal = document.body.removeChild(modal);
