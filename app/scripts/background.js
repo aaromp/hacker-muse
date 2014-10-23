@@ -136,7 +136,6 @@ chrome.runtime.onInstalled.addListener(function (details) {
 //   }
 // });
 
- 
 console.log('\'Allo \'Allo! Event Page for Browser Action');
 
 var on;
