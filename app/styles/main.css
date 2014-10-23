@@ -209,33 +209,53 @@
   /*background: #000000;*/
   height: 106px;
   width: 106px;
+  z-index: -2;
   /*-webkit-transform-origin: 50% 0 0;*/
   /*-webkit-box-shadow: -1px 3px 3px 0 rgba(0,0,0,0.16);*/
 }
 
-.flipper-tab-front, .flipper-tab-back {
+.top-front, .top-back {
+  /*background: orange;*/
+  height: 106px;
+  width: 106px;
+  position: absolute;
+}
+
+.top-front {
+  z-index: 1;
+}
+
+.top-front-overlay, .top-back-overlay {
   height: 53px;
   width: 106px;
   position: absolute;
   overflow: hidden;
-  border-radius: 0 0 10px 10px;
-  opacity: 0.33;
+  border-radius: 10px 10px 0 0;
+  /*opacity: 0.33;*/
 }
+
+.tab {
+  position: absolute;
+  height: 106px;
+  width: 106px;
+}
+
 .tab, .flipped {
   -webkit-transform-style: preserve-3d;
   -webkit-transition: all 0.4s ease;
 }
 
-.flipper-tab-front {
+.top-front-overlay {
   background: pink;
   -webkit-backface-visibility: hidden;
+  z-index: 2;
 }
 
-.flipper-tab-back {
+.top-back-overlay {
   background: yellow;
 }
 
 .tab.flipped {
-  -webkit-transform: rotateX(-180deg);
-  -webkit-transform-origin: 50% 0 0;
+  /*-webkit-transform: rotateX(-180deg);*/
+  /*-webkit-transform-origin: 50% 50% 0;*/
 }

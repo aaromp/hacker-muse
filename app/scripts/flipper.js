@@ -3,19 +3,25 @@
 var Flipper;
 
 Flipper = function(value) {
-  var top, topFront, topBack, bottom, bottomFront, bottomBack, next, nextFront, nextBack;
+  var top, topFront, topBack, topFrontOverlay, topBackOverlay;
+  // var bottomFront, bottomBack, next, nextFront, nextBack;
 
   this.value = value;
   this.element = document.createElement('div');
   this.element.classList.add('flipper');
 
 
+  /* create top tab */
   top = document.createElement('div');
   top.classList.add('tab');
   topFront = document.createElement('div');
-  topFront.classList.add('flipper-tab-back');
+  topFront.classList.add('top-front');
   topBack = document.createElement('div');
-  topBack.classList.add('flipper-tab-front');
+  topBack.classList.add('top-back');
+  topFrontOverlay = document.createElement('div');
+  topFrontOverlay.classList.add('top-front-overlay');
+  topBackOverlay = document.createElement('div');
+  topBackOverlay.classList.add('top-back-overlay');
 
   // bottom = document.createElement('div');
   // bottom.classList.add('tab');
@@ -37,13 +43,15 @@ Flipper = function(value) {
 
 
   this.element.appendChild(top);
-  top.appendChild(topFront);
-  top.appendChild(topBack);
+  top.appendChild(topFrontOverlay);
+  top.appendChild(topBackOverlay);
+  topFrontOverlay.appendChild(topFront);
+  topBackOverlay.appendChild(topBack);
   setTimeout(function() {
     console.log('flipped?');
     window.getComputedStyle(top).transition; // make sure transform is loaded
     top.classList.add('flipped');
-  }, 5000);
+  }, 7500);
   
 
   // this.element.appendChild(bottom);
