@@ -1,13 +1,13 @@
 'use strict';
 
-chrome.storage.sync.get(['hackerMuseUser', 'hackerMuseUserData', 'hackerMuseRecentPostData'], function(data){
-  console.log('get hackerMuseUser from Content');
-  console.log(data);
-});
+// chrome.storage.sync.get(['hackerMuseUser', 'hackerMuseUserData', 'hackerMuseRecentPostData'], function(data){
+//   console.log('get hackerMuseUser from Content');
+//   console.log(data);
+// });
 
-chrome.runtime.sendMessage({method: 'setHackerMuseUser', user: 'JDoty'}, function(response) {
-  console.log('response from emitted event is: ', response.response);
-});
+// chrome.runtime.sendMessage({method: 'setHackerMuseUser', user: 'JDoty'}, function(response) {
+//   console.log('response from emitted event is: ', response.response);
+// });
 
 console.log('\'Allo \'Allo! Content script');
 
