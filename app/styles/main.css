@@ -214,7 +214,7 @@
   /*-webkit-box-shadow: -1px 3px 3px 0 rgba(0,0,0,0.16);*/
 }
 
-.tab {
+.tab, .inverted {
   position: absolute;
   height: 106px;
   width: 106px;
@@ -223,9 +223,13 @@
   line-height: 66px;
 }
 
-.tab, .flipped {
+.tab, .inverted {
   -webkit-transform-style: preserve-3d;
   -webkit-transform: none;
+}
+
+.inverted {
+  -webkit-transform: rotateX(-180deg);
 }
 
 .tab.flip-down {
@@ -234,9 +238,20 @@
   /*-webkit-transform-origin: 50% 50% 0;*/
 }
 
-.tab.flip-down.back-up {
+.inverted.back-up {
   -webkit-transition: all 0.4s ease;
   -webkit-transform: rotateX(-360deg);
+}
+
+.tab.flip-up {
+  -webkit-transition: all 0.4s ease;
+  -webkit-transform: rotateX(180deg);
+  /*-webkit-transform-origin: 50% 50% 0;*/
+}
+
+.inverted.back-down {
+  -webkit-transition: all 0.4s ease;
+  -webkit-transform: rotateX(0deg);
 }
 
 .front, .back {

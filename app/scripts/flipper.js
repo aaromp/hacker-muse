@@ -28,8 +28,12 @@ Tab = function() {
   backOverlay.appendChild(this.back);
 
   this.element.addEventListener('transitionend', function() {
-    if (this.element.className === 'tab flip-down back-up') {
+    if (this.element.className === 'inverted back-up' ||
+        this.element.className === 'inverted back-down') {
       this.element.className = 'tab';
+    } else if (this.element.className === 'tab flip-up' || 
+               this.element.className === 'tab flip-down') {
+      this.element.className = 'inverted';
     }
   }.bind(this), true);
 };
@@ -45,8 +49,16 @@ Tab.prototype.setBack = function(content) {
 Tab.prototype.flipUp = function() {
   if (this.element.className === 'tab') {
     this.element.classList.add('flip-down');
-  } else if (this.element.className === 'tab flip-down') {
+  } else if (this.element.className === 'inverted') {
     this.element.classList.add('back-up');
+  }
+};
+
+Tab.prototype.flipDown = function() {
+  if (this.element.className === 'tab') {
+    this.element.classList.add('flip-up');
+  } else if (this.element.className === 'inverted') {
+    this.element.classList.add('back-down');
   }
 };
 
@@ -68,7 +80,9 @@ Flipper = function(value) {
   // this.element.appendChild(bottomTab.element);
   // this.element.appendChild(nextTab.element);
 
-  window.addEventListener('keyup', function(e) {
+  window.addEventListener('keydown', function(e) {
+    e.preventDefault();
+
     if(e.keyCode === 40) topTab.flipUp();
 
     if(e.keyCode === 38) topTab.flipDown();
