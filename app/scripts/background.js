@@ -143,6 +143,7 @@ var on;
 on = false;
 
 chrome.browserAction.onClicked.addListener(function(tab){
+  // chrome.windows.create({type: 'panel', height: 500, width: 500});
   chrome.tabs.sendMessage(tab.id, {modal: on}, function(response) {
     on = response.modal;
   });

@@ -52,6 +52,8 @@ Tab.prototype.flipUp = function() {
   } else if (this.element.className === 'inverted') {
     this.element.classList.add('back-up');
   }
+
+  this.flipped = !this.flipped;
 };
 
 Tab.prototype.flipDown = function() {
@@ -60,34 +62,80 @@ Tab.prototype.flipDown = function() {
   } else if (this.element.className === 'inverted') {
     this.element.classList.add('back-down');
   }
+
+  this.flipped = !this.flipped;
 };
 
 Flipper = function(value) {
-  var topTab, bottomTab, nextTab;
-
   this.value = value;
   this.element = document.createElement('div');
   this.element.classList.add('flipper');
 
   /* create tab */
-  topTab = new Tab();
-  topTab.setFront('front');
-  topTab.setBack('back');
-  bottomTab = new Tab();
-  nextTab = new Tab();
+  this.topTab = new Tab();
+  this.topTab.setFront(this.value);
+  this.topTab.setBack('');
+  this.bottomTab = new Tab();
+  this.bottomTab.setBack(this.value);
+  this.nextTab = new Tab();
+  this.nextTab.setFront('');
 
-  this.element.appendChild(topTab.element);
-  // this.element.appendChild(bottomTab.element);
-  // this.element.appendChild(nextTab.element);
+  this.bottomTab.flipUp();
+
+  this.element.appendChild(this.nextTab.element);
+  this.element.appendChild(this.bottomTab.element);
+  this.element.appendChild(this.topTab.element);
 
   window.addEventListener('keydown', function(e) {
-    e.preventDefault();
+    // e.preventDefault();
 
-    if(e.keyCode === 40) topTab.flipUp();
+    // if(e.keyCode === 40) this.flipUp(++this.value);
 
-    if(e.keyCode === 38) topTab.flipDown();
-  });
+    if(e.keyCode === 38) this.flipDown(--this.value);
+  }.bind(this));
 };
+
+Flipper.prototype.flipDown = function(value) {
+  var top;
+
+  this.value = value;
+
+  if (this.nextTab.flipped) this.nextTab.flipUp();
+
+  this.topTab.setBack(this.value);
+  this.bottomTab.setFront('');
+  this.nextTab.setBack('');
+  this.nextTab.setFront(this.value);
+
+  this.topTab.flipUp();
+
+  top = this.topTab;
+  this.topTab = this.bottomTab;
+  this.bottomTab = this.nextTab;
+  this.nextTab = top;
+};
+
+// Flipper.prototype.flipUp = function(value) {
+//   var bottom;
+
+//   this.value = value;
+
+//   if (!this.nextTab.flipped) this.nextTab.flipDown();
+
+//   // this.topTab.setFront('front');
+//   this.topTab.setBack(this.value);
+//   // this.bottomTab.setBack('front');
+//   this.bottomTab.setFront('blank');
+//   this.nextTab.setBack('blank');
+//   this.nextTab.setFront(this.value);
+
+//   this.topTab.flipDown();
+
+//   top = this.topTab;
+//   this.topTab = this.bottomTab;
+//   this.bottomTab = this.nextTab;
+//   this.nextTab = top;
+// };
 
 Flipper.prototype.valueOf = function() {
   return this.value;

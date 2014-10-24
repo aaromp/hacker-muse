@@ -225,6 +225,7 @@
 
 .tab, .inverted {
   -webkit-transform-style: preserve-3d;
+  -webkit-perspective: 250px;
   -webkit-transform: none;
 }
 
@@ -234,23 +235,27 @@
 
 .tab.flip-down {
   -webkit-transition: all 0.4s ease;
+  -webkit-perspective: 250px;
   -webkit-transform: rotateX(-180deg);
   /*-webkit-transform-origin: 50% 50% 0;*/
 }
 
 .inverted.back-up {
   -webkit-transition: all 0.4s ease;
+  -webkit-perspective: 250px;
   -webkit-transform: rotateX(-360deg);
 }
 
 .tab.flip-up {
   -webkit-transition: all 0.4s ease;
+  -webkit-perspective: 250px;
   -webkit-transform: rotateX(180deg);
   /*-webkit-transform-origin: 50% 50% 0;*/
 }
 
 .inverted.back-down {
   -webkit-transition: all 0.4s ease;
+  -webkit-perspective: 250px;
   -webkit-transform: rotateX(0deg);
 }
 
@@ -262,11 +267,11 @@
   justify-content: center;
   align-items: center;
 }
-/*
+
 .front {
-  background: pink;
+  background: #FFFFFF;
 }
-*/
+
 .back {
   top: -53px;
   background: #F6F6EF;

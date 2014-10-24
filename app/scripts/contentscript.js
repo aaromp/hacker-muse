@@ -15,7 +15,7 @@ var background;
 background = document.createElement('div');
 background.classList.add('hn-muse-background');
 
-var thingy = new Flipper(2);
+var thingy = new Flipper(0);
 
 background.appendChild(thingy.element);
 
