@@ -26,6 +26,12 @@ Tab = function() {
   this.element.appendChild(backOverlay);
   frontOverlay.appendChild(this.front);
   backOverlay.appendChild(this.back);
+
+  this.element.addEventListener('transitionend', function() {
+    if (this.element.className === 'tab flip-down back-up') {
+      this.element.className = 'tab';
+    }
+  }.bind(this), true);
 };
 
 Tab.prototype.setFront = function(content) {
@@ -36,18 +42,11 @@ Tab.prototype.setBack = function(content) {
   this.back.innerHTML = content;
 };
 
-Tab.prototype.toggleDirection = function() {
-  this.flipped = !this.flipped;
-};
-
-Tab.prototype.flip = function() {
-  // if flipped, flip up otherwise, flip down
-  if (this.flipped) {
-    
-  } else {
-    window.getComputedStyle(this.element).transition; // make sure transform is loaded
-    this.element.classList.add('flipped');
-    console.log(this.element.classlist);
+Tab.prototype.flipUp = function() {
+  if (this.element.className === 'tab') {
+    this.element.classList.add('flip-down');
+  } else if (this.element.className === 'tab flip-down') {
+    this.element.classList.add('back-up');
   }
 };
 
@@ -70,10 +69,9 @@ Flipper = function(value) {
   // this.element.appendChild(nextTab.element);
 
   window.addEventListener('keyup', function(e) {
-    if(e.keyCode === 40) {
-      console.log('flipper!');
-      topTab.flip();
-    }
+    if(e.keyCode === 40) topTab.flipUp();
+
+    if(e.keyCode === 38) topTab.flipDown();
   });
 };
 
